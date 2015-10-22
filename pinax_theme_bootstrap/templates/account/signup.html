@@ -1,6 +1,6 @@
 {% extends "site_base.html" %}
 
-{% load url from future %}
+{% load account_tags %}
 {% load i18n %}
 {% load bootstrap %}
 
@@ -20,7 +20,7 @@
             </form>
             <p class="login-signup">
                 <small>
-                    {% trans "Already have an account?" %}  <strong><a href="{% url 'account_login' %}">{% trans "Log in" %}</a></strong>
+                    {% trans "Already have an account?" %}  <strong><a href="{% urlnext 'account_login' %}">{% trans "Log in" %}</a></strong>
                 </small>
             </p>
         </div>
@@ -30,7 +30,8 @@
     </div>
 {% endblock %}
 
-{% block extra_script %}
+{% block scripts %}
+    {{ block.super }}
     <script type="text/javascript">
         $(document).ready(function() {
             $('#id_username').focus();
